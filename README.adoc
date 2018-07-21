@@ -10,4 +10,18 @@ Sending mails to people in a list about birthdays of others in this list.
 ----
 # getting correct node-version by using nvm
 nvm use
+npm install
 ----
+
+### run tests
+
+[source,bash]
+----
+npm test
+----
+
+### configs
+
+All configurations lay in the config-folder. For every config it exists an example config. Before you can start you have to create a real config.
+
+For example mail.example.json has to copied to mail.json. (TODO init-script that generates this files from the examples)

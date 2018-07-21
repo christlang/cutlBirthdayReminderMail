@@ -1,0 +1,13 @@
+
+## Birthday Reminder Mail
+
+Sending mails to people in a list about birthdays of others in this list.
+
+
+### Build environment
+
+[source,bash]
+----
+# getting correct node-version by using nvm
+nvm use
+----

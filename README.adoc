@@ -25,3 +25,10 @@ npm test
 All configurations lay in the config-folder. For every config it exists an example config. Before you can start you have to create a real config.
 
 For example mail.example.json has to copied to mail.json. (TODO init-script that generates this files from the examples)
+
+### run
+
+[source,bash]
+----
+node index.js
+----

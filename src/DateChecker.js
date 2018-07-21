@@ -6,8 +6,8 @@ class DateChecker {
     getToday() {
         const today = new Date();
 
-        const day = today.getDay();
-        const month = today.getMonth();
+        const day = today.getDate();
+        const month = today.getMonth() + 1; // month is starting with 0 - January
         const year = today.getFullYear();
 
         return `${day}.${month}.${year}`;
@@ -30,8 +30,8 @@ class DateChecker {
         const partsToday = today.split('.');
         const partsBirthday = birthday.split('.');
 
-        if (partsToday[DAY] === partsBirthday[DAY] &&
-            partsToday[Month] === partsBirthday[Month]) {
+        if (Number(partsToday[DAY]) === Number(partsBirthday[DAY]) &&
+            Number(partsToday[Month]) === Number(partsBirthday[Month])) {
             return true;
         }
         return false;

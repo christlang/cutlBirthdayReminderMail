@@ -1,0 +1,6 @@
+{
+  "persons": [
+    { "name": "Person A", "birthday": "22.07.2018", "email": "personA@posteo.de"},
+    { "name": "Person B", "birthday": "01.01.1983", "email": "personB@posteo.de"}
+  ]
+}

@@ -14,6 +14,8 @@ describe('DateChecker', () => {
         [
             { today: '21.07.2018', birthday: '21.07.2018', expected: true,
                 comment: 'same day'},
+            { today: '21.07.2018', birthday: '21.7.2018', expected: true,
+                comment: 'same day diffrent writings'},
             { today: '21.07.2018', birthday: '21.08.2018', expected: false,
                 comment: 'same day, different month'},
             { today: '', birthday: '21.08.2018', expected: false,

@@ -8,8 +8,10 @@
 # 5 0 * * * $HOME/projects/cutlBrithdayReminderMail/cron.sh
 
 DIR=$HOME/projects/cutlBrithdayReminderMail
-LOG=$HOME/projects/cutlBrithdayReminderMail/log/simple.log
+LOGDIR=$HOME/projects/cutlBrithdayReminderMail/log
+LOG=$LOGDIR/simple.log
 
+mkdir -p $LOGDIR
 echo " " >> $LOG
 echo " " >> $LOG
 echo "$(date) start" >> $LOG

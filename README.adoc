@@ -30,5 +30,7 @@ For example mail.example.json has to copied to mail.json. (TODO init-script that
 
 [source,bash]
 ----
-node index.js
+node index.js          # normal run
+
+node index.js --dryRun # (just print messages but do not send
 ----

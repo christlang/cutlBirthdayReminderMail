@@ -14,6 +14,9 @@ const reminder = new Reminder(dateChecker);
 const today = dateChecker.getToday();
 const birthdayChildren = reminder.getBirthdayChilds(personList, today);
 
+const args = process.argv.splice(2);
+const dryRun = args[0] === '--dryRun';
+
 birthdayChildren.forEach(child => {
     const listToSendTo = reminder.getWishers(personList, child);
 
@@ -29,6 +32,10 @@ birthdayChildren.forEach(child => {
 
         console.log(`Send mail to ${name} / ${email} for ${child.name}`);
 
-        return all.then(() => mailer.sendMail(message));
+        if (dryRun) {
+            return all.then(() => console.log(message));
+        } else {
+            return all.then(() => mailer.sendMail(message));
+        }
     }, Promise.resolve());
 });

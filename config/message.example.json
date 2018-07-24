@@ -1,7 +1,7 @@
 {
   "from": "sender@server.com",
   "to": "receiver@sender.com",
-  "subject": "Message title",
-  "text": "Plaintext version of the message",
-  "html": "<p>HTML version of the message</p>"
+  "subject": "{birthdayChild.name} was born at {birthdayChild.birthday}",
+  "text": "Hi {receiver.name}, \n\nyou get this mail because you are in the list.\nIf you want to leave the list, please inform the owner.",
+  "html": ""
 }

@@ -1,5 +1,6 @@
 const DateChecker = require('./src/DateChecker');
 const Mailer = require('./src/Mailer');
+const MessageHandler = require('./src/MessageHandler');
 const Reminder = require('./src/Reminder');
 
 const smtpConfig = require('./config/mail.json');
@@ -20,9 +21,11 @@ birthdayChildren.forEach(child => {
         const email = wisher.email;
         const name = wisher.name;
 
+        const msgHandler = new MessageHandler(child, wisher);
+
         message.to = email;
-        message.subject = `Remember birthday of ${child.name}`;
-        message.text += ` - to: ${name}`;
+        message.subject = msgHandler.render(message.subject);
+        message.text = msgHandler.render(message.text);
 
         console.log(`Send mail to ${name} / ${email} for ${child.name}`);
 

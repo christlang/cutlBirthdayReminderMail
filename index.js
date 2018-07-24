@@ -26,6 +26,6 @@ birthdayChildren.forEach(child => {
 
         console.log(`Send mail to ${name} / ${email} for ${child.name}`);
 
-        all.then(() => mailer.sendMail(message));
+        return all.then(() => mailer.sendMail(message));
     }, Promise.resolve());
 });

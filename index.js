@@ -4,7 +4,7 @@ const MessageHandler = require('./src/MessageHandler');
 const Reminder = require('./src/Reminder');
 
 const smtpConfig = require('./config/mail.json');
-const message = require('./config/message.json');
+const messageTemplate = require('./config/message.json');
 const personList = require('./config/list.json').persons;
 
 const dateChecker = new DateChecker();
@@ -26,6 +26,7 @@ birthdayChildren.forEach(child => {
 
         const msgHandler = new MessageHandler(child, wisher);
 
+        const message = Object.assign({}, messageTemplate);
         message.to = email;
         message.subject = msgHandler.render(message.subject);
         message.text = msgHandler.render(message.text);

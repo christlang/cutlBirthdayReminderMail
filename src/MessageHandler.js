@@ -11,7 +11,7 @@ class MessageHandler {
         Object.keys(this[attribute]).forEach(element => {
             const target = `{${attribute}.${element}}`;
             const replacement = this[attribute][element];
-            console.log(`${target} -> ${replacement}`);
+            //console.log(`${target} -> ${replacement}`);
             adjustedTemplate = adjustedTemplate
                 .split(target)
                 .join(replacement);

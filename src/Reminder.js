@@ -25,6 +25,24 @@ class Reminder {
     }
 
     /**
+     * Returns the birthday-children in today+reminderDays days.
+     *
+     * @param list
+     * @param today
+     * @param reminderDays
+     * @returns {Array}
+     */
+    getReminderForBirthdayChildren(list, today, reminderDays) {
+        return list.filter(person => {
+            if (this.dateChecker.getDiffInDays(today, person.birthday) === reminderDays) {
+                console.log(`birthdayReminder: ${JSON.stringify(person)} for reminderDays: ${reminderDays}`);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    /**
      * Returns list of wishers.
      *
      * @param list

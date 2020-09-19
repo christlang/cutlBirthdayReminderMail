@@ -36,4 +36,26 @@ describe('DateChecker', () => {
             });
         });
     });
+
+    describe('getDiff', () => {
+        it('NaN will be returned -> no error handling at the moment', () => {
+           expect(cut.getDiffInDays('', '')).toBe(NaN);
+        });
+
+        it('first date before second', () => {
+            expect(cut.getDiffInDays('01.01.2020', '02.01.2020')).toBe(1);
+        });
+
+        it('first date before second longer time', () => {
+            expect(cut.getDiffInDays('01.01.2020', '01.02.2020')).toBe(31);
+        });
+
+        it('second date before first', () => {
+            expect(cut.getDiffInDays('02.01.2020', '01.01.2020')).toBe(-1);
+        });
+
+        it('first date before second and different years', () => {
+            expect(cut.getDiffInDays('01.01.2019', '02.01.2020')).toBe(1);
+        });
+    });
 });

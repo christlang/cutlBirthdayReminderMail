@@ -14,11 +14,13 @@ describe('MessageHandler', () => {
         email: 'r-email'
     };
 
+    const reminderDays = 7;
+
     describe('render', () => {
         let cut;
 
         beforeEach(() => {
-            cut = new MessageHandler(birthdayChild, receiver);
+            cut = new MessageHandler(birthdayChild, receiver, reminderDays);
         });
 
         it('without substituion', () => {
@@ -38,6 +40,11 @@ describe('MessageHandler', () => {
         it('replace {receiver.name}', () => {
             expect(cut.render('abc {receiver.name}'))
                 .toEqual('abc r-name');
+        });
+
+        it('replace {reminderDays}', () => {
+            expect(cut.render('abc {reminderDays}'))
+              .toEqual('abc 7');
         });
     });
 

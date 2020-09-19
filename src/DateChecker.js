@@ -13,6 +13,21 @@ class DateChecker {
         return `${day}.${month}.${year}`;
     }
 
+    getDiffInDays(date1, date2) {
+        const thisYear = new Date().getFullYear();
+
+        const DAY = 0;
+        const Month = 1;
+        const partsDateOne = date1.split('.');
+        const partsDateTwo = date2.split('.');
+
+        const d1 = new Date(thisYear, Number(partsDateOne[Month]) -1, partsDateOne[DAY]);
+        const d2 = new Date(thisYear, Number(partsDateTwo[Month]) -1, partsDateTwo[DAY]);
+
+        const diffInMilliseconds = d2 - d1;
+        return diffInMilliseconds / 60 / 60 / 24 / 1000;
+    }
+
     /**
      * Returns if birthday is today or not.
      *

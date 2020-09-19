@@ -12,12 +12,14 @@ const mailer = new Mailer(smtpConfig);
 const reminder = new Reminder(dateChecker);
 
 const today = dateChecker.getToday();
+const reminderDays = messageTemplate.reminderDays;
 const birthdayChildren = reminder.getBirthdayChilds(personList, today);
+const reminderForBirthdays = reminder.getReminderForBirthdayChildren(personList, today, reminderDays);
 
 const args = process.argv.splice(2);
 const dryRun = args[0] === '--dryRun';
 
-birthdayChildren.forEach(child => {
+const sendMailIfNeeded = (child, subject, text, html) => {
     const listToSendTo = reminder.getWishers(personList, child);
 
     listToSendTo.reduce((all, wisher) => {
@@ -29,12 +31,14 @@ birthdayChildren.forEach(child => {
             return all;
         }
 
-        const msgHandler = new MessageHandler(child, wisher);
+        const msgHandler = new MessageHandler(child, wisher, reminderDays);
 
-        const message = Object.assign({}, messageTemplate);
+        const message = {};
         message.to = email;
-        message.subject = msgHandler.render(message.subject);
-        message.text = msgHandler.render(message.text);
+        message.from = messageTemplate.from;
+        message.subject = msgHandler.render(subject);
+        message.text = msgHandler.render(text);
+        message.html = msgHandler.render(html);
 
         console.log(`Send mail to ${name} / ${email} for ${child.name}`);
 
@@ -44,4 +48,14 @@ birthdayChildren.forEach(child => {
             return all.then(() => mailer.sendMail(message));
         }
     }, Promise.resolve());
+};
+
+birthdayChildren.forEach(child => {
+    const {subject, text, html} = messageTemplate.birthdayMail;
+    sendMailIfNeeded(child, subject, text, html);
+});
+
+reminderForBirthdays.forEach(child => {
+    const {subject, text, html} = messageTemplate.reminderMail;
+    sendMailIfNeeded(child, subject, text, html);
 });

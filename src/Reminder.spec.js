@@ -47,6 +47,26 @@ describe('Reminder', () => {
         });
     });
 
+    describe('getReminderForBirthdayChildren', () => {
+        const fakeToday = '20.09.2020';
+        const in7days = '27.09.2020';
+
+        test('empty ist returns empty list', () => {
+            expect(cut.getBirthdayChilds([], fakeToday))
+              .toEqual([]);
+        });
+
+        test('find one in list', () => {
+            const birthdayChild = createPerson(in7days);
+            const list = [];
+            list.push(birthdayChild);
+            list.push(createPerson('01.01.2019'));
+            expect(cut.getReminderForBirthdayChildren(list, fakeToday, 7))
+              .toEqual([birthdayChild]);
+        });
+    });
+
+
     describe('getWishers', () => {
 
         test('birthday child is alone', () => {

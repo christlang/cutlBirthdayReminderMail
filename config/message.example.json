@@ -1,7 +1,15 @@
 {
   "from": "sender@server.com",
   "to": "receiver@sender.com",
-  "subject": "{birthdayChild.name} was born at {birthdayChild.birthday}",
-  "text": "Hi {receiver.name}, \n\nyou get this mail because you are in the list.\nIf you want to leave the list, please inform the owner.",
-  "html": ""
+  "birthdayMail": {
+    "subject": "{birthdayChild.name} was born at {birthdayChild.birthday}",
+    "text": "Hi {receiver.name}, \n\nyou get this mail because you are in the list.\nIf you want to leave the list, please inform the owner.",
+    "html": ""
+  },
+  "reminderDays": 7,
+  "reminderMail": {
+    "subject": "{birthdayChild.name} was born at {birthdayChild.birthday} you have still {reminderDays} days for a gift",
+    "text": "Hi {receiver.name}, \n\nyou get this mail because you are in the list. And it's {reminderDays} days up to his birthday.\nIf you want to leave the list, please inform the owner.",
+    "html": ""
+  }
 }

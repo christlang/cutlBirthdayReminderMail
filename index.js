@@ -24,6 +24,11 @@ birthdayChildren.forEach(child => {
         const email = wisher.email;
         const name = wisher.name;
 
+        if (email === '') {
+            console.log('wisher has no email ', wisher);
+            return all;
+        }
+
         const msgHandler = new MessageHandler(child, wisher);
 
         const message = Object.assign({}, messageTemplate);
